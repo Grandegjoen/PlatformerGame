@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Parallax/Forest1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/World.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/GameLogic/MovingTiles.tscn" type="PackedScene" id=10]
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MovingTiles" parent="." instance=ExtResource( 10 )]
+
+[node name="RespawnPoints" type="YSort" parent="."]
+position = Vector2( 11, -73 )
+
+[node name="1" type="Position2D" parent="RespawnPoints"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
+visible = false

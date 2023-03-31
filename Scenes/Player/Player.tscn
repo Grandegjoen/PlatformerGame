@@ -1,0 +1,282 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Untitled2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/PlayerSpriteSheet.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/GameLogic/AnchorCamera2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GameLogic/AnchorDetector2D.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 12, 23.5 )
+
+[sub_resource type="CircleShape2D" id=16]
+radius = 14.0
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 13, 24 )
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 14.1421
+
+[sub_resource type="Animation" id=6]
+resource_name = "Falling"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 21, 22 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "GetUp"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Slide"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 10, 11 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Somersault"
+length = 0.45
+loop = true
+step = 0.055
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.055, 0.11, 0.165, 0.22, 0.275, 0.33 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 23, 24, 25, 26, 23, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "WallSlide"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 16, 17 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 19, 18 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NormalCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 5 )
+shape = SubResource( 14 )
+
+[node name="FlippedCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 1, -5 )
+shape = SubResource( 14 )
+disabled = true
+
+[node name="DashCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 16 )
+disabled = true
+
+[node name="AnchorCamera" parent="." instance=ExtResource( 4 )]
+process_mode = 0
+limit_bottom = 0
+limit_smoothed = true
+drag_margin_h_enabled = true
+smoothing_enabled = true
+max_speed = 4000.0
+
+[node name="AnchorDetector2D" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="RightWall" type="RayCast2D" parent="."]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 16 )
+
+[node name="LeftWall" type="RayCast2D" parent="."]
+visible = false
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 16 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="NormalA2DCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1, 5 )
+shape = SubResource( 15 )
+
+[node name="DashCollision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 17 )
+disabled = true
+
+[node name="PortalTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Falling = SubResource( 6 )
+anims/GetUp = SubResource( 7 )
+anims/Idle = SubResource( 3 )
+anims/Jump = SubResource( 8 )
+anims/RESET = SubResource( 4 )
+anims/Run = SubResource( 9 )
+anims/Slide = SubResource( 10 )
+anims/Somersault = SubResource( 11 )
+anims/WallSlide = SubResource( 12 )
+anims/death = SubResource( 13 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+texture = ExtResource( 2 )
+color = Color( 0.74902, 0.192157, 0.192157, 1 )
+shadow_enabled = true
+
+[node name="GravityTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="anchor_detached" from="AnchorDetector2D" to="AnchorCamera" method="_on_AnchorDetector2D_anchor_detached"]
+[connection signal="anchor_detected" from="AnchorDetector2D" to="AnchorCamera" method="_on_AnchorDetector2D_anchor_detected"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="PortalTimer" to="." method="_on_PortalTimer_timeout"]
+[connection signal="timeout" from="GravityTimer" to="." method="_on_GravityTimer_timeout"]

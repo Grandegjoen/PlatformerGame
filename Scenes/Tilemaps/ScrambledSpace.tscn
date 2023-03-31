@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/RandomTilemap.gd" type="Script" id=7]
+
+[node name="ScrambledTiles" type="TileMap"]
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 7 )
+maximum = 5
